@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Price Comparison</title>
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <i class="fas fa-plane me-2"></i>
+                Flight Finder
+            </a>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        <!-- Hero Section -->
+        <div class="hero-section text-center mb-5">
+            <h1 class="display-4 mb-3">Find the Best Flight Deals</h1>
+            <p class="lead">Compare prices across airlines and save on your next trip</p>
+        </div>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else 'info' }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Search Form -->
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow">
+                    <div class="card-body p-4">
+                        <form method="POST" action="{{ url_for('search_flights') }}" id="searchForm">
+                            <div class="row g-3">
+                                <!-- Origin -->
+                                <div class="col-md-6 col-lg-3">
+                                    <label for="origin" class="form-label">
+                                        <i class="fas fa-plane-departure me-1"></i>
+                                        From
+                                    </label>
+                                    <select class="form-select" id="origin" name="origin" required>
+                                        <option value="">Select origin</option>
+                                        {% for code, name in airports %}
+                                            <option value="{{ code }}">{{ name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <!-- Destination -->
+                                <div class="col-md-6 col-lg-3">
+                                    <label for="destination" class="form-label">
+                                        <i class="fas fa-plane-arrival me-1"></i>
+                                        To
+                                    </label>
+                                    <select class="form-select" id="destination" name="destination" required>
+                                        <option value="">Select destination</option>
+                                        {% for code, name in airports %}
+                                            <option value="{{ code }}">{{ name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <!-- Departure Date -->
+                                <div class="col-md-6 col-lg-3">
+                                    <label for="departure_date" class="form-label">
+                                        <i class="fas fa-calendar me-1"></i>
+                                        Departure
+                                    </label>
+                                    <input type="date" class="form-control" id="departure_date" name="departure_date" required>
+                                </div>
+
+                                <!-- Return Date -->
+                                <div class="col-md-6 col-lg-3">
+                                    <label for="return_date" class="form-label">
+                                        <i class="fas fa-calendar-alt me-1"></i>
+                                        Return (optional)
+                                    </label>
+                                    <input type="date" class="form-control" id="return_date" name="return_date">
+                                </div>
+
+                                <!-- Search Button -->
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5" id="searchBtn">
+                                        <i class="fas fa-search me-2"></i>
+                                        Search Flights
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popular Routes -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3 class="mb-4">
+                    <i class="fas fa-star me-2"></i>
+                    Popular Routes
+                </h3>
+                <div class="row g-3">
+                    {% for origin_code, dest_code, route_name in popular_routes %}
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 popular-route-card" 
+                                 data-origin="{{ origin_code }}" 
+                                 data-destination="{{ dest_code }}">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">{{ route_name }}</h5>
+                                    <p class="card-text text-muted">Click to search</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="row mt-5 mb-5">
+            <div class="col-12">
+                <h3 class="text-center mb-4">Why Choose Flight Finder?</h3>
+                <div class="row g-4">
+                    <div class="col-md-4 text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-dollar-sign fa-3x text-primary"></i>
+                        </div>
+                        <h5>Best Prices</h5>
+                        <p class="text-muted">Compare prices across multiple airlines to find the best deals</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-clock fa-3x text-primary"></i>
+                        </div>
+                        <h5>Real-time Search</h5>
+                        <p class="text-muted">Get up-to-date flight information and pricing instantly</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-filter fa-3x text-primary"></i>
+                        </div>
+                        <h5>Smart Filters</h5>
+                        <p class="text-muted">Filter by price, duration, stops, and airline preferences</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container text-center">
+            <p>&copy; 2025 Flight Finder. Find your perfect flight at the best price.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

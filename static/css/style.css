@@ -1,0 +1,228 @@
+/* Custom styles for Flight Finder */
+
+/* Hero Section */
+.hero-section {
+    padding: 3rem 0;
+    background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-info) 100%);
+    border-radius: 15px;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+/* Popular Route Cards */
+.popular-route-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid var(--bs-border-color);
+}
+
+.popular-route-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-color: var(--bs-primary);
+}
+
+/* Flight Cards */
+.flight-card {
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--bs-primary);
+}
+
+.flight-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Flight Route Visualization */
+.flight-route {
+    position: relative;
+}
+
+.flight-path {
+    position: relative;
+    min-width: 200px;
+}
+
+.flight-line {
+    position: relative;
+}
+
+.flight-line hr {
+    border-color: var(--bs-primary);
+    border-width: 2px;
+    opacity: 1;
+}
+
+.flight-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bs-body-bg);
+    padding: 0.25rem;
+    color: var(--bs-primary);
+    font-size: 1.2rem;
+}
+
+.stops-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bs-warning);
+    color: var(--bs-dark);
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Time Display */
+.time-info {
+    min-width: 80px;
+}
+
+.departure-time,
+.arrival-time {
+    font-weight: 600;
+    color: var(--bs-body-color);
+}
+
+/* Price Display */
+.price {
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Search Form Enhancements */
+.card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.form-select:focus,
+.form-control:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.25);
+}
+
+/* Filter Section */
+.airline-filters {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.airline-filters .form-check {
+    margin-bottom: 0.5rem;
+}
+
+/* Sort Options */
+.sort-options .form-select {
+    min-width: 150px;
+}
+
+/* Loading Animation */
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Search Summary */
+.search-summary .card {
+    background: linear-gradient(135deg, var(--bs-primary), var(--bs-info));
+}
+
+/* Feature Icons */
+.feature-icon {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 1rem;
+    }
+    
+    .flight-path {
+        min-width: 150px;
+    }
+    
+    .time-info {
+        min-width: 60px;
+    }
+    
+    .departure-time,
+    .arrival-time {
+        font-size: 1rem;
+    }
+    
+    .flight-route .d-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .flight-path {
+        margin: 1rem 0;
+        width: 100%;
+    }
+    
+    .price-info {
+        text-align: center !important;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .flight-card .row {
+        flex-direction: column;
+    }
+    
+    .flight-card .col-md-8,
+    .flight-card .col-md-4 {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Animation for flight cards */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.flight-card {
+    animation: slideInUp 0.6s ease-out;
+}
+
+/* Custom scrollbar for filters */
+.airline-filters::-webkit-scrollbar {
+    width: 6px;
+}
+
+.airline-filters::-webkit-scrollbar-track {
+    background: var(--bs-secondary-bg);
+    border-radius: 3px;
+}
+
+.airline-filters::-webkit-scrollbar-thumb {
+    background: var(--bs-secondary);
+    border-radius: 3px;
+}
+
+.airline-filters::-webkit-scrollbar-thumb:hover {
+    background: var(--bs-primary);
+}
