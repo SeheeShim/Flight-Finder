@@ -257,8 +257,8 @@ function initializeResultsPage() {
     }
     
     function createFlightCard(flight) {
-        const departureTime = flight.departure_time.split(' ')[1];
-        const arrivalTime = flight.arrival_time.split(' ')[1];
+        const departureTime = new Date(flight.departure_time).toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit', hour12: false});
+        const arrivalTime = new Date(flight.arrival_time).toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit', hour12: false});
         const stopsDisplay = flight.stops === 0 ? 
             '<i class="fas fa-plane flight-icon"></i>' : 
             `<span class="stops-badge">${flight.stops} stop${flight.stops > 1 ? 's' : ''}</span>`;
