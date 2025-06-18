@@ -21,6 +21,7 @@ def search_flights():
             destination = request.form.get('destination')
             departure_date_str = request.form.get('departure_date')
             return_date_str = request.form.get('return_date')
+            passengers = request.form.get('passengers', '1')
             
             # Validate inputs
             if not origin or not destination or not departure_date_str:
@@ -73,6 +74,7 @@ def search_flights():
                                  destination=destination,
                                  departure_date=departure_date_str,
                                  return_date=return_date_str,
+                                 passengers=passengers,
                                  origin_name=AIRPORTS.get(origin, origin),
                                  destination_name=AIRPORTS.get(destination, destination))
                                  

@@ -153,7 +153,7 @@
                                                 <div class="d-flex align-items-center">
                                                     <div class="time-info text-center">
                                                         <div class="departure-time h5 mb-0">
-                                                            {{ flight.departure_time.split(' ')[1] }}
+                                                            {{ flight.departure_time.strftime('%H:%M') }}
                                                         </div>
                                                         <small class="text-muted">{{ origin }}</small>
                                                     </div>
@@ -174,7 +174,7 @@
                                                     
                                                     <div class="time-info text-center">
                                                         <div class="arrival-time h5 mb-0">
-                                                            {{ flight.arrival_time.split(' ')[1] }}
+                                                            {{ flight.arrival_time.strftime('%H:%M') }}
                                                         </div>
                                                         <small class="text-muted">{{ destination }}</small>
                                                     </div>
@@ -230,7 +230,7 @@
                                                         <div class="d-flex align-items-center">
                                                             <div class="time-info text-center">
                                                                 <div class="departure-time h5 mb-0">
-                                                                    {{ flight.departure_time.split(' ')[1] }}
+                                                                    {{ flight.departure_time.strftime('%H:%M') }}
                                                                 </div>
                                                                 <small class="text-muted">{{ destination }}</small>
                                                             </div>
@@ -251,7 +251,7 @@
                                                             
                                                             <div class="time-info text-center">
                                                                 <div class="arrival-time h5 mb-0">
-                                                                    {{ flight.arrival_time.split(' ')[1] }}
+                                                                    {{ flight.arrival_time.strftime('%H:%M') }}
                                                                 </div>
                                                                 <small class="text-muted">{{ origin }}</small>
                                                             </div>

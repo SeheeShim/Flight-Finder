@@ -48,10 +48,10 @@
                                 <div class="col-md-6 col-lg-3">
                                     <label for="origin" class="form-label">
                                         <i class="fas fa-plane-departure me-1"></i>
-                                        From
+                                        출발지
                                     </label>
                                     <select class="form-select" id="origin" name="origin" required>
-                                        <option value="">Select origin</option>
+                                        <option value="">출발지 선택</option>
                                         {% for code, name in airports %}
                                             <option value="{{ code }}">{{ name }}</option>
                                         {% endfor %}
@@ -62,10 +62,10 @@
                                 <div class="col-md-6 col-lg-3">
                                     <label for="destination" class="form-label">
                                         <i class="fas fa-plane-arrival me-1"></i>
-                                        To
+                                        도착지
                                     </label>
                                     <select class="form-select" id="destination" name="destination" required>
-                                        <option value="">Select destination</option>
+                                        <option value="">도착지 선택</option>
                                         {% for code, name in airports %}
                                             <option value="{{ code }}">{{ name }}</option>
                                         {% endfor %}
@@ -73,16 +73,16 @@
                                 </div>
 
                                 <!-- Departure Date -->
-                                <div class="col-md-6 col-lg-3">
+                                <div class="col-md-6 col-lg-2">
                                     <label for="departure_date" class="form-label">
                                         <i class="fas fa-calendar me-1"></i>
-                                        Departure
+                                        출발일
                                     </label>
                                     <input type="date" class="form-control" id="departure_date" name="departure_date" required>
                                 </div>
 
                                 <!-- Return Date -->
-                                <div class="col-md-6 col-lg-3">
+                                <div class="col-md-6 col-lg-2">
                                     <label for="return_date" class="form-label">
                                         <i class="fas fa-calendar-alt me-1"></i>
                                         Return (optional)
@@ -90,11 +90,30 @@
                                     <input type="date" class="form-control" id="return_date" name="return_date">
                                 </div>
 
+                                <!-- Passengers -->
+                                <div class="col-md-6 col-lg-2">
+                                    <label for="passengers" class="form-label">
+                                        <i class="fas fa-users me-1"></i>
+                                        인원수
+                                    </label>
+                                    <select class="form-select" id="passengers" name="passengers">
+                                        <option value="1">1명</option>
+                                        <option value="2">2명</option>
+                                        <option value="3">3명</option>
+                                        <option value="4">4명</option>
+                                        <option value="5">5명</option>
+                                        <option value="6">6명</option>
+                                        <option value="7">7명</option>
+                                        <option value="8">8명</option>
+                                        <option value="9">9명 이상</option>
+                                    </select>
+                                </div>
+
                                 <!-- Search Button -->
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary btn-lg px-5" id="searchBtn">
                                         <i class="fas fa-search me-2"></i>
-                                        Search Flights
+                                        항공편 검색
                                     </button>
                                 </div>
                             </div>
