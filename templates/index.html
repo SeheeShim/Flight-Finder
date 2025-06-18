@@ -39,18 +39,18 @@
 
         <!-- Search Form -->
         <div class="row justify-content-center">
-            <div class="col-lg-10">
+            <div class="col-12">
                 <div class="card shadow">
                     <div class="card-body p-4">
                         <form method="POST" action="{{ url_for('search_flights') }}" id="searchForm">
-                            <div class="row g-3">
+                            <div class="row g-4 align-items-end">
                                 <!-- Origin -->
-                                <div class="col-md-6 col-lg-3">
-                                    <label for="origin" class="form-label">
+                                <div class="col-md-6 col-lg-2">
+                                    <label for="origin" class="form-label fw-bold">
                                         <i class="fas fa-plane-departure me-1"></i>
                                         출발지
                                     </label>
-                                    <select class="form-select" id="origin" name="origin" required>
+                                    <select class="form-select form-select-lg" id="origin" name="origin" required>
                                         <option value="">출발지 선택</option>
                                         {% for code, name in airports %}
                                             <option value="{{ code }}">{{ name }}</option>
@@ -59,12 +59,12 @@
                                 </div>
 
                                 <!-- Destination -->
-                                <div class="col-md-6 col-lg-3">
-                                    <label for="destination" class="form-label">
+                                <div class="col-md-6 col-lg-2">
+                                    <label for="destination" class="form-label fw-bold">
                                         <i class="fas fa-plane-arrival me-1"></i>
                                         도착지
                                     </label>
-                                    <select class="form-select" id="destination" name="destination" required>
+                                    <select class="form-select form-select-lg" id="destination" name="destination" required>
                                         <option value="">도착지 선택</option>
                                         {% for code, name in airports %}
                                             <option value="{{ code }}">{{ name }}</option>
@@ -73,30 +73,30 @@
                                 </div>
 
                                 <!-- Departure Date -->
-                                <div class="col-md-6 col-lg-2">
-                                    <label for="departure_date" class="form-label">
+                                <div class="col-md-4 col-lg-2">
+                                    <label for="departure_date" class="form-label fw-bold">
                                         <i class="fas fa-calendar me-1"></i>
                                         출발일
                                     </label>
-                                    <input type="date" class="form-control" id="departure_date" name="departure_date" required>
+                                    <input type="date" class="form-control form-control-lg" id="departure_date" name="departure_date" required>
                                 </div>
 
                                 <!-- Return Date -->
-                                <div class="col-md-6 col-lg-2">
-                                    <label for="return_date" class="form-label">
+                                <div class="col-md-4 col-lg-2">
+                                    <label for="return_date" class="form-label fw-bold">
                                         <i class="fas fa-calendar-alt me-1"></i>
-                                        Return (optional)
+                                        복귀일 (선택)
                                     </label>
-                                    <input type="date" class="form-control" id="return_date" name="return_date">
+                                    <input type="date" class="form-control form-control-lg" id="return_date" name="return_date">
                                 </div>
 
                                 <!-- Passengers -->
-                                <div class="col-md-6 col-lg-2">
-                                    <label for="passengers" class="form-label">
+                                <div class="col-md-4 col-lg-2">
+                                    <label for="passengers" class="form-label fw-bold">
                                         <i class="fas fa-users me-1"></i>
                                         인원수
                                     </label>
-                                    <select class="form-select" id="passengers" name="passengers">
+                                    <select class="form-select form-select-lg" id="passengers" name="passengers">
                                         <option value="1">1명</option>
                                         <option value="2">2명</option>
                                         <option value="3">3명</option>
@@ -110,8 +110,8 @@
                                 </div>
 
                                 <!-- Search Button -->
-                                <div class="col-12 text-center">
-                                    <button type="submit" class="btn btn-primary btn-lg px-5" id="searchBtn">
+                                <div class="col-md-12 col-lg-2 text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100 py-3" id="searchBtn">
                                         <i class="fas fa-search me-2"></i>
                                         항공편 검색
                                     </button>
